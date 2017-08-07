@@ -1,0 +1,43 @@
+﻿<Window x:Class="EditPainting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EditPainting"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="480" Width="640">
+
+    <Grid Margin="10">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+
+        <ItemsControl Grid.Column="0" ItemsSource="{Binding Shapes}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas 
+                        x:Name="ShapeDocument" 
+                        Background="Transparent"
+                        SizeChanged="CanvasSizeChanged"
+                        MouseDown="ShapeDocument_MouseDown"
+                        MouseMove="ShapeDocument_MouseMove"
+                        MouseUp="ShapeDocument_MouseUp"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
+        <StackPanel Grid.Column="1" Margin="10">
+            <Button x:Name="AddRectangleButton" Content="New Rectangle" Click="AddRectangleButton_Click"/>
+            <Separator Height="20" Foreground="Transparent" Background="Transparent" />
+            <Button x:Name="AddEllipseButton" Content="New Circle" Click="AddEllipseButton_Click"/>
+            <Separator Height="20" Foreground="Transparent" Background="Transparent" />
+            <Button x:Name="SaveAsButton" Content="Save as..." Click="SaveAsButton_Click"/>
+            <Separator Height="20" Foreground="Transparent" Background="Transparent" />
+            <Button x:Name="LoadButon" Content="Load..." Click="LoadButon_Click"/>
+            <Separator Height="20" Foreground="Transparent" Background="Transparent" />
+            <Button x:Name="RevertButton" Content="Revert" Click="RevertButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
